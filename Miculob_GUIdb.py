@@ -275,7 +275,7 @@ def edit(update):
     Label(registration, text="",font=("", 34), bg="light yellow").pack()
 
     # edit/update record details
-    Label(registration, text="Fill in your info below", fg="dark red",bg="light yellow",font=("Arial",17,"bold")).pack()
+    Label(registration, text="Update your info", fg="dark red",bg="light yellow",font=("Arial",17,"bold")).pack()
     Label(registration, text="",font=("", 17), bg= "light yellow").pack()
 
     Label(registration, text="First Name", fg="dark red",bg="light yellow", font=("",14)).pack()
@@ -339,4 +339,3 @@ def save(dd):
 reader()
 writer()
 home()
-
