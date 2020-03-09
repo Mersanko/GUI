@@ -49,10 +49,7 @@ def home():
     Button(text="Quit", bg="light yellow",width="27", height="2", font=("Arial", 14),fg="dark red", command=homescreen.destroy).pack()
     Label(text="", font=("",5), bg="light yellow").pack()
 
-
     writer()
-
-
     homescreen.mainloop()
 
 
@@ -342,4 +339,3 @@ def save(dd):
 reader()
 writer()
 home()
-
