@@ -1,5 +1,5 @@
 # final gui
-
+import tkinter
 from tkinter import *
 import csv
 from tkinter import messagebox as ms
@@ -49,7 +49,10 @@ def home():
     Button(text="Quit", bg="light yellow",width="27", height="2", font=("Arial", 14),fg="dark red", command=homescreen.destroy).pack()
     Label(text="", font=("",5), bg="light yellow").pack()
 
+
     writer()
+
+
     homescreen.mainloop()
 
 
@@ -85,6 +88,26 @@ def log_in():
 
     Button(login, text="Cancel", padx=16, pady=5, bg="light yellow", font=("Arial", 13),fg="dark red", command=login.destroy).pack()
     Label(login, text="", font=("",2), bg="light yellow").pack()
+
+
+def getlist():
+    global root
+    root = tkinter.Tk()
+    root.title("List of Students (Registered)")
+    root.configure(background="light yellow")
+    with open('record.txt', newline='') as dataa:
+        reader = csv.reader(dataa)
+        r = 0
+        for col in reader:
+            c = 0
+            for row in col:
+                label = tkinter.Label(root,width=10, height=2, text=row, relief=tkinter.RIDGE, fg="dark red", bg="light yellow")
+                label.grid(row=r, column=c)
+                c += 1
+            r += 1
+            Button(root, text="Back", width=6, height=2, bg="light yellow", font=("Arial", 13), fg="dark red",
+                   command=root.destroy).grid(row=0, column=6)
+    root.mainloop()
 
 
 
@@ -139,6 +162,9 @@ def input(dd):
 
             Button(studentrecord, text="Delete Record", bg="green", width="30", height="2",fg="dark red", font=("Arial", 13),command=lambda: delete(dd)).pack()
             Label(studentrecord, text="",font=("", 2), bg="light yellow").pack()
+
+            Button(studentrecord, text="See List", bg="light yellow", width="30", height="2", font=("Arial", 13), fg="dark red",command=lambda: getlist()).pack()
+            Label(studentrecord, text="", font=("", 5), bg="light yellow").pack()
 
             Button(studentrecord, text="Back", bg="green", width="30", height="2",fg="dark red", font=("Arial", 13), command=studentrecord.destroy).pack()
             Label(studentrecord, text="",font=("", 2), bg="light yellow").pack()
@@ -275,7 +301,7 @@ def edit(update):
     Label(registration, text="",font=("", 34), bg="light yellow").pack()
 
     # edit/update record details
-    Label(registration, text="Update your info", fg="dark red",bg="light yellow",font=("Arial",17,"bold")).pack()
+    Label(registration, text="Fill in your info below", fg="dark red",bg="light yellow",font=("Arial",17,"bold")).pack()
     Label(registration, text="",font=("", 17), bg= "light yellow").pack()
 
     Label(registration, text="First Name", fg="dark red",bg="light yellow", font=("",14)).pack()
@@ -339,3 +365,4 @@ def save(dd):
 reader()
 writer()
 home()
+
